@@ -1,0 +1,79 @@
+/* NIM - Nama : 3411191091 - Dhea Fuji Astari 
+   Kelas      : DSE-B */ 
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tugas Implementasi Interface</title>
+</head>
+<body>
+<form name="formTugas" id="tugasku" action="" onsubmit="return validateForm()" method="POST">
+    <input type="text" name="username" id="username" placeholder="username"> <br>
+    <input type="password" name="password" id="pass" placeholder="Password"><br> 
+    <input type="password" name="repeat" id="repeat" placeholder="Ulangi Password"><br>
+    <input type="text" name="email" id="email" placeholder="Email"><br>
+    <input type="text" name="telpon" id="telpon" placeholder="Nomor Telpon"><br>
+    <textarea id="alamat" style="width: 167px;">Alamat</textarea><br>
+    <input type="submit" name="" value="Submit">
+</form>
+
+<script type="text/javascript">
+    function validateForm(){	
+    	//Username
+        var user = document.formTugas.username.value;
+        if (user.length < 3) {
+            alert("Error: cause username too short");
+            return false;
+        } else if(user.length > 15){
+            alert("Error: cause username too long");
+            return false;
+        }
+
+        //Password
+        var pass = document.formTugas.pass.value;
+        var repeat = document.formTugas.repeat.value;
+        var test = pass || repeat;
+        if ((pass.length && repeat.length < 4)) {
+            alert("Error: password too short");
+            return false;
+        } else if (test.search(/[0-9]/) == -1) {
+            alert("Error: no number");
+            return false;
+        } else if (test.search(/[A-Z]/) == -1) {
+            alert("Error: no uppercase letter");
+            return false;
+        } else if (test.search(/[^a-zA-Z0-9\!\@\#\$\%\^\&\*\(\)\_\+]/) != -1) {
+            alert("Error: no symbol or bad char");
+            return false;
+        }
+
+        //Email
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (formTugas.email.value.match(mailformat)){
+        }else{
+            alert("Invalid email address!");
+            document.formTugas.email.focus();
+            return false;
+        }
+        
+        //Telepon
+        var telp = document.formTugas.telpon.value;
+        if(telp.length < 10){
+            alert("Error: Phone numbers need to be 10 numbers!");
+            document.formTugas.telpon.focus();
+            return false;
+        }else if(telp. length > 12){
+            alert("Error: Phone numbers need to be 12 numbers!");
+            document.formTugas.telpon.focus();
+            return false;
+        }
+
+        //Alamat
+        var address = document.formTugas.alamat.value;
+        if(address == ""){
+            alert("Error: Address not be blank!");
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
